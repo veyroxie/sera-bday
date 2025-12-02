@@ -16,7 +16,7 @@ It includes:
   It’s the main “read this while listening” vibe.
 
 - 💌 **Hidden love note**  
-  Clicking the "slightly illegal level of flirt" button reveals a soft message.
+  Clicking the "Click for cringe" button reveals a soft message.
 
 - 🌹 **Wifey-coded writing**  
   Text throughout the page is personalised for Seraphina.
