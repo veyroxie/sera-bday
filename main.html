@@ -39,29 +39,27 @@
 
     </section>
 
-    <!-- Right: music + reasons -->
-    <aside class="side-card">
-    <!-- Top: photo -->
-        <div class="side-section">
-            <div class="section-label">Birthday soundtrack</div>
-            <h2 class="side-title">I'd do 50 shades with u any day</h2>
+<aside class="side-card">
+    <div class="side-section">
+        <div class="section-label">Birthday soundtrack</div>
+        <h2 class="side-title">I'd do 50 shades with u any day</h2>
 
-            <div class="picture-frame">
-                <img src="us.jpeg" alt="Seraphina Picture">
-            </div>
+        <div class="picture-frame">
+            <img src="us.jpeg" alt="Seraphina Picture">
+        </div>
+    </div>
+
+    <div class="side-section">
+        <div class="reasons">
+            <h3>Reasons I'm happy you're alive”:</h3>
+            <div class="reason-pill"><span class="icon">🔥</span> Illegally attractive.</div>
+            <div class="reason-pill"><span class="icon">🧠</span> Hella smart, what a talent.</div>
+            <div class="reason-pill"><span class="icon">😈</span> No bullshit baddie.</div>
+            <div class="reason-pill"><span class="icon">💫</span> Sweet girl.</div>
+            <div class="reason-pill"><span class="icon">💍</span> Too nice but not a bad thing either.</div>
         </div>
 
-        <!-- Bottom: reasons + gift + love note -->
-        <div class="side-section">
-            <div class="reasons">
-                <h3>Reasons I'm happy you're alive”:</h3>
-                <div class="reason-pill"><span class="icon">🔥</span> Illegally attractive.</div>
-                <div class="reason-pill"><span class="icon">🧠</span> Hella smart, what a talent.</div>
-                <div class="reason-pill"><span class="icon">😈</span> No bullshit baddie.</div>
-                <div class="reason-pill"><span class="icon">💫</span> Sweet girl.</div>
-                <div class="reason-pill"><span class="icon">💍</span> Too nice but not a bad thing either.</div>
-            </div>
-
+        <!-- GIFT + NOTE share the same space -->
         <div class="gift-area">
             <div class="gift-wrapper" id="giftWrapper">
                 <div class="gift-box" id="giftBox">
@@ -73,7 +71,6 @@
                 <p class="gift-label">Tap to open your gift</p>
             </div>
 
-            <!-- This will appear in the SAME spot after the gift opens -->
             <div id="loveNote" class="love-note">
                 <strong>Okay, real talk:</strong><br>
                 I’m genuinely grateful I met you. The minute we met, we got along like a house on fire.
@@ -83,8 +80,9 @@
                 <span class="tiny">Don't let people take advantage of you!</span>
             </div>
         </div>
+    </div>
+</aside>
 
-    </aside>
 
 
 <audio id="bgmusic" autoplay loop>
@@ -112,27 +110,42 @@
 
 
 <script>
-// confettiBurst(...) should already be defined above this
+// small confetti function
+function confettiBurst(x, y) {
+    const colors = ["#ff4b5c", "#ffdde1", "#ffd166", "#ffffff"];
+
+    for (let i = 0; i < 45; i++) {
+        const confetti = document.createElement("div");
+        confetti.classList.add("confetti-piece");
+        confetti.style.left = x + "px";
+        confetti.style.top = y + "px";
+        confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
+        confetti.style.setProperty("--tx", (Math.random() - 0.5) * 260 + "px");
+        confetti.style.setProperty("--ty", (Math.random() - 0.5) * 260 + "px");
+        document.body.appendChild(confetti);
+        setTimeout(() => confetti.remove(), 1200);
+    }
+}
 
 const giftWrapper = document.getElementById("giftWrapper");
 const giftBox = document.getElementById("giftBox");
 const loveNote = document.getElementById("loveNote");
 
 giftBox.addEventListener("click", () => {
-    // animate lid / gift
+    // animate lid
     giftBox.classList.add("gift-open");
 
-    // confetti from the gift position
+    // confetti from gift centre
     const rect = giftBox.getBoundingClientRect();
     const x = rect.left + rect.width / 2;
     const y = rect.top + rect.height / 2;
     confettiBurst(x, y);
 
-    // after animation: hide gift, show note in same place
+    // after animation: swap gift -> note
     setTimeout(() => {
         giftWrapper.style.display = "none";
         loveNote.classList.add("visible");
-    }, 400); // matches your open animation timing
+    }, 400); // sync with .gift-lid transition
 });
 </script>
 
