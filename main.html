@@ -51,16 +51,17 @@
 
     <!-- Right: music + reasons -->
     <aside class="side-card">
+    <!-- Top: photo -->
         <div class="side-section">
             <div class="section-label">Birthday soundtrack</div>
             <h2 class="side-title">I'd do 50 shades with u any day</h2>
 
-                <div class="picture-frame">
-                    <img src="us.jpeg" alt="Seraphina Picture">
-                </div>
+            <div class="picture-frame">
+                <img src="us.jpeg" alt="Seraphina Picture">
+            </div>
         </div>
 
-
+        <!-- Bottom: reasons + gift + love note -->
         <div class="side-section">
             <div class="reasons">
                 <h3>Reasons I'm happy you're alive”:</h3>
@@ -71,17 +72,29 @@
                 <div class="reason-pill"><span class="icon">💍</span> Too nice but not a bad thing either.</div>
             </div>
 
-        <div id="loveNote" class="love-note">
-            <strong>Okay, real talk:</strong><br>
+            <!-- Gift box now under the text -->
+            <div class="gift-wrapper">
+                <div class="gift-box" id="giftBox">
+                    <div class="gift-lid"></div>
+                    <div class="gift-body"></div>
+                    <div class="gift-ribbon-vertical"></div>
+                    <div class="gift-ribbon-horizontal"></div>
+                </div>
+                <p class="gift-label">Tap to open your gift</p>
+            </div>
+
+            <!-- Love note appears after opening -->
+            <div id="loveNote" class="love-note">
+                <strong>Okay, real talk:</strong><br>
                 I’m genuinely grateful I met you. The minute we met, we got along like a house on fire.
                 I know we've had our misunderstandings but I'm glad we were able to talk it out. No man will
                 ever get between us again. Thank you for listening to my rants, and I'll gladly listen to
                 yours for as long as you need me to. Have the happiest birthday Seraphina 💖
-            <span class="tiny">Don't let people take advantage of you!</span>
+                <span class="tiny">Don't let people take advantage of you!</span>
             </div>
         </div>
     </aside>
-    </div>
+
 
 <audio id="bgmusic" autoplay loop>
     <source src="earned_it.mp3" type="audio/mpeg">
@@ -107,23 +120,41 @@
 </div>
 
 <script>
+// simple confetti burst
+function confettiBurst(x, y) {
+    const colors = ["#ff4b5c", "#ffdde1", "#ffd166", "#ffffff"];
+
+    for (let i = 0; i < 45; i++) {
+        const confetti = document.createElement("div");
+        confetti.classList.add("confetti-piece");
+        confetti.style.left = x + "px";
+        confetti.style.top = y + "px";
+        confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
+        confetti.style.setProperty("--tx", (Math.random() - 0.5) * 260 + "px");
+        confetti.style.setProperty("--ty", (Math.random() - 0.5) * 260 + "px");
+        document.body.appendChild(confetti);
+        setTimeout(() => confetti.remove(), 1200);
+    }
+}
+
 const giftBox = document.getElementById("giftBox");
 const loveNote = document.getElementById("loveNote");
 
-giftBox.addEventListener("click", (e) => {
-
-    // open gift lid
+giftBox.addEventListener("click", () => {
+    // open gift
     giftBox.classList.add("gift-open");
 
-    // confetti burst at exact location
+    // confetti from gift position
     const rect = giftBox.getBoundingClientRect();
     const x = rect.left + rect.width / 2;
     const y = rect.top + rect.height / 2;
     confettiBurst(x, y);
 
+    // show note
     setTimeout(() => {
         loveNote.classList.add("visible");
     }, 400);
 });
 </script>
+
 
