@@ -299,6 +299,26 @@ body {
 .gift-open {
     /* no wiggle once opened */
 }
+.gift-area {
+    margin-top: 18px;
+}
+
+.love-note {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.25s ease;
+    background: rgba(255,75,92,0.15);
+    padding: 14px;
+    border-radius: 18px;
+    border: 1px solid rgba(255,221,225,0.5);
+    font-size: 0.9rem;
+}
+
+.love-note.visible {
+    display: block;
+    opacity: 1;
+}
+
 
 .confetti-piece {
     position: fixed;
@@ -341,23 +361,6 @@ body {
     font-size: 0.78rem;
 }
 
-/* Love Note */
-.love-note {
-    display: none;
-    opacity: 0;
-    transition: 0.2s ease;
-    background: rgba(255,75,92,0.15);
-    padding: 12px;
-    border-radius: 18px;
-    border: 1px solid rgba(255,221,225,0.5);
-    margin-top: 12px;
-    font-size: 0.9rem;
-}
-
-.love-note.visible {
-    display: block;
-    opacity: 1;
-}
 
 .love-note .tiny {
     font-size: 0.78rem;

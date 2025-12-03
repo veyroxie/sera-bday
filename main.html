@@ -36,16 +36,6 @@
             <span>official wifey status</span> ✨ no refunds, no returns
         </div>
 
-        <div class="gift-wrapper">
-            <div class="gift-box" id="giftBox">
-                <div class="gift-lid"></div>
-                <div class="gift-body"></div>
-                <div class="gift-ribbon-vertical"></div>
-                <div class="gift-ribbon-horizontal"></div>
-            </div>
-            <p class="gift-label">Tap to open your gift</p>
-        </div>
-
 
     </section>
 
@@ -72,8 +62,8 @@
                 <div class="reason-pill"><span class="icon">💍</span> Too nice but not a bad thing either.</div>
             </div>
 
-            <!-- Gift box now under the text -->
-            <div class="gift-wrapper">
+        <div class="gift-area">
+            <div class="gift-wrapper" id="giftWrapper">
                 <div class="gift-box" id="giftBox">
                     <div class="gift-lid"></div>
                     <div class="gift-body"></div>
@@ -83,7 +73,7 @@
                 <p class="gift-label">Tap to open your gift</p>
             </div>
 
-            <!-- Love note appears after opening -->
+            <!-- This will appear in the SAME spot after the gift opens -->
             <div id="loveNote" class="love-note">
                 <strong>Okay, real talk:</strong><br>
                 I’m genuinely grateful I met you. The minute we met, we got along like a house on fire.
@@ -93,6 +83,7 @@
                 <span class="tiny">Don't let people take advantage of you!</span>
             </div>
         </div>
+
     </aside>
 
 
@@ -119,41 +110,29 @@
     </footer>
 </div>
 
+
 <script>
-// simple confetti burst
-function confettiBurst(x, y) {
-    const colors = ["#ff4b5c", "#ffdde1", "#ffd166", "#ffffff"];
+// confettiBurst(...) should already be defined above this
 
-    for (let i = 0; i < 45; i++) {
-        const confetti = document.createElement("div");
-        confetti.classList.add("confetti-piece");
-        confetti.style.left = x + "px";
-        confetti.style.top = y + "px";
-        confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
-        confetti.style.setProperty("--tx", (Math.random() - 0.5) * 260 + "px");
-        confetti.style.setProperty("--ty", (Math.random() - 0.5) * 260 + "px");
-        document.body.appendChild(confetti);
-        setTimeout(() => confetti.remove(), 1200);
-    }
-}
-
+const giftWrapper = document.getElementById("giftWrapper");
 const giftBox = document.getElementById("giftBox");
 const loveNote = document.getElementById("loveNote");
 
 giftBox.addEventListener("click", () => {
-    // open gift
+    // animate lid / gift
     giftBox.classList.add("gift-open");
 
-    // confetti from gift position
+    // confetti from the gift position
     const rect = giftBox.getBoundingClientRect();
     const x = rect.left + rect.width / 2;
     const y = rect.top + rect.height / 2;
     confettiBurst(x, y);
 
-    // show note
+    // after animation: hide gift, show note in same place
     setTimeout(() => {
+        giftWrapper.style.display = "none";
         loveNote.classList.add("visible");
-    }, 400);
+    }, 400); // matches your open animation timing
 });
 </script>
 
