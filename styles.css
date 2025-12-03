@@ -203,11 +203,21 @@ body {
     margin-bottom: 10px;
 }
 
-.spotify-embed {
-    margin-bottom: 10px;
-    border-radius: 16px;
+.picture-frame {
+    width: 100%;
+    border-radius: 20px;
     overflow: hidden;
-    box-shadow: 0 10px 24px rgba(0,0,0,0.7);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    box-shadow:
+        0 12px 28px rgba(0, 0, 0, 0.7),
+        0 0 14px rgba(255, 109, 132, 0.6);
+    background: rgba(0, 0, 0, 0.4);
+}
+
+.picture-frame img {
+    width: 100%;
+    height: auto;
+    display: block;
 }
 
 .note {
