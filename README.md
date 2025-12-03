@@ -45,5 +45,3 @@ Want to tweak it?
 - Change the colors in `styles.css` under `:root`
 - Replace the Spotify link with another track
 - Add photos, animations, or additional sections
-
-If you need help modifying anything, I can generate the code instantly.
