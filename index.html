@@ -37,14 +37,9 @@
         </div>
 
         <div class="button-row">
-            <button class="btn-primary" id="playSongBtn">
-            <span class="icon">▶️</span>
-            Your favourite song, courtesy of Moody
-            </button>
-
             <button class="btn-ghost" id="loveNoteBtn">
-            <span class="icon">💌</span>
-            Click for cringe
+                <span class="icon">💌</span>
+                Click for cringe
             </button>
         </div>
     </section>
@@ -77,10 +72,10 @@
 
         <div id="loveNote" class="love-note">
             <strong>Okay, real talk:</strong><br>
-            I’m genuinely grateful I met you. The minute we met, we got along like a house on fire.
-            I know we've had our misunderstandings but I'm glad we were able to talk it out. No man will
-            ever get between us again. Thank you for listening to my rants, and I'll gladly listen to
-            yours for as long as you need me to. Have the happiest birthday Seraphina 💖
+                I’m genuinely grateful I met you. The minute we met, we got along like a house on fire.
+                I know we've had our misunderstandings but I'm glad we were able to talk it out. No man will
+                ever get between us again. Thank you for listening to my rants, and I'll gladly listen to
+                yours for as long as you need me to. Have the happiest birthday Seraphina 💖
             <span class="tiny">Don't let people take advantage of you!</span>
             </div>
         </div>
@@ -91,3 +86,15 @@
         Have a great one.
     </footer>
 </div>
+
+<script>
+    const loveNoteBtn = document.getElementById("loveNoteBtn");
+    const loveNote = document.getElementById("loveNote");
+
+    loveNoteBtn.addEventListener("click", () => {
+        loveNote.classList.toggle("visible");
+        loveNoteBtn.innerHTML = loveNote.classList.contains("visible")
+            ? '<span class="icon">😉</span> Hide cringe'
+            : '<span class="icon">💌</span> Click for cringe';
+    });
+</script>
