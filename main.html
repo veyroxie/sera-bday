@@ -38,10 +38,14 @@
 
         <div class="gift-wrapper">
             <div class="gift-box" id="giftBox">
-                🎁
+                <div class="gift-lid"></div>
+                <div class="gift-body"></div>
+                <div class="gift-ribbon-vertical"></div>
+                <div class="gift-ribbon-horizontal"></div>
             </div>
             <p class="gift-label">Tap to open your gift</p>
         </div>
+
 
     </section>
 
@@ -103,16 +107,23 @@
 </div>
 
 <script>
-    const giftBox = document.getElementById("giftBox");
-    const loveNote = document.getElementById("loveNote");
+const giftBox = document.getElementById("giftBox");
+const loveNote = document.getElementById("loveNote");
 
-    giftBox.addEventListener("click", () => {
-        // play open animation
-        giftBox.classList.add("gift-open");
+giftBox.addEventListener("click", (e) => {
 
-        // reveal love note AFTER animation ends
-        setTimeout(() => {
-            loveNote.classList.add("visible");
-        }, 350);
-    });
+    // open gift lid
+    giftBox.classList.add("gift-open");
+
+    // confetti burst at exact location
+    const rect = giftBox.getBoundingClientRect();
+    const x = rect.left + rect.width / 2;
+    const y = rect.top + rect.height / 2;
+    confettiBurst(x, y);
+
+    setTimeout(() => {
+        loveNote.classList.add("visible");
+    }, 400);
+});
 </script>
+
