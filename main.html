@@ -36,12 +36,13 @@
             <span>official wifey status</span> ✨ no refunds, no returns
         </div>
 
-        <div class="button-row">
-            <button class="btn-ghost" id="loveNoteBtn">
-                <span class="icon">💌</span>
-                Click for cringe
-            </button>
+        <div class="gift-wrapper">
+            <div class="gift-box" id="giftBox">
+                🎁
+            </div>
+            <p class="gift-label">Tap to open your gift</p>
         </div>
+
     </section>
 
     <!-- Right: music + reasons -->
@@ -102,13 +103,16 @@
 </div>
 
 <script>
-    const loveNoteBtn = document.getElementById("loveNoteBtn");
+    const giftBox = document.getElementById("giftBox");
     const loveNote = document.getElementById("loveNote");
 
-    loveNoteBtn.addEventListener("click", () => {
-        loveNote.classList.toggle("visible");
-        loveNoteBtn.innerHTML = loveNote.classList.contains("visible")
-            ? '<span class="icon">😉</span> Hide cringe'
-            : '<span class="icon">💌</span> Click for cringe';
+    giftBox.addEventListener("click", () => {
+        // play open animation
+        giftBox.classList.add("gift-open");
+
+        // reveal love note AFTER animation ends
+        setTimeout(() => {
+            loveNote.classList.add("visible");
+        }, 350);
     });
 </script>
